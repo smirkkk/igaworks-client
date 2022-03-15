@@ -4,19 +4,19 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
 export default {
   name: "App",
   created() {
-    
-  },
-  mounted() {
-    console.log('hi');
+    // 유저 아이디 없는 경우 새로 생성
+    if (window.sessionStorage.getItem("user_id") == null) {
+      window.sessionStorage.setItem("user_id", window.guid());
+    }
   }
-}
+};
 </script>
 
 <style>
